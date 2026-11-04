@@ -1,4 +1,4 @@
-# Flock Energy REFIT take-home
+# Flock Energy REFIT Assessment
 
 This repository contains a reproducible prototype for inspecting REFIT
 household power data, exploring washing-machine use, and estimating
