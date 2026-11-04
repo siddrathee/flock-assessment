@@ -1,0 +1,224 @@
+{
+  "source": "Official cleaned REFIT minute data for Houses 1, 2, 3, and 5",
+  "input": "Aggregate power at minute t, lags at 1 and 5 minutes, rolling 5/15-minute aggregate means, 1-minute aggregate change, and hour/day cyclic features",
+  "target": "Washing-machine active power in watts",
+  "validation": "Chronological 70/10/20 split within each household. The first 70% of time trains the pooled model, the next 10% selects a global zero cutoff by lowest validation MAE, and the final 20% is the untouched test period. Overlapping time windows are never randomly mixed across the split.",
+  "issues_flag_handling": "Exclude minute bins with Issues > 0 from training, validation, and test; the cleaned-data readme flags these where appliance-monitor sums exceed aggregate power.",
+  "train_sample_rows": 300000,
+  "random_seed": 42,
+  "ridge_alpha": 0.5,
+  "validation_best_mae_cutoff_candidate_w": 500,
+  "final_model_zero_cutoff_w": null,
+  "validation_mae_by_candidate_cutoff_w": {
+    "0": 36.98207641983528,
+    "10": 35.4502905871081,
+    "25": 31.58626835597129,
+    "50": 28.6547580548012,
+    "100": 25.416024403769413,
+    "150": 23.868389471172467,
+    "200": 23.61797191192769,
+    "300": 23.038642862134935,
+    "500": 22.637034393538435
+  },
+  "model_selection_note": "The validation-selected cutoff is reported as a rejected candidate; it nearly suppresses all activity on test data. The final model is the unthresholded ridge regression.",
+  "active_power_threshold_for_f1_w": 100.0,
+  "overall_test_metrics": {
+    "always_off_baseline": {
+      "mae_w": 18.678072457860655,
+      "rmse_w": 158.97035277737942,
+      "active_precision_at_100w": 0.0,
+      "active_recall_at_100w": 0.0,
+      "active_f1_at_100w": 0.0,
+      "predicted_to_actual_energy_ratio": 0.0
+    },
+    "ridge_regression": {
+      "mae_w": 28.487566054943667,
+      "rmse_w": 152.4808746395497,
+      "active_precision_at_100w": 0.1927078072921927,
+      "active_recall_at_100w": 0.12105830848296428,
+      "active_f1_at_100w": 0.14870236146831892,
+      "predicted_to_actual_energy_ratio": 0.7307964604684787
+    },
+    "thresholded_candidate_not_selected": {
+      "mae_w": 18.67893767400252,
+      "rmse_w": 158.9717136816269,
+      "active_precision_at_100w": 0.0,
+      "active_recall_at_100w": 0.0,
+      "active_f1_at_100w": 0.0,
+      "predicted_to_actual_energy_ratio": 4.632256052203981e-05
+    }
+  },
+  "per_house_test_metrics": [
+    {
+      "house": 1,
+      "channel": "Appliance5",
+      "split_dates": {
+        "validation_start": "2014-12-30T19:29:00",
+        "test_start": "2015-03-04T16:58:00"
+      },
+      "usable_minutes": {
+        "usable_train_minutes": 547176,
+        "usable_validation_minutes": 89335,
+        "usable_test_minutes": 139753,
+        "issue_flagged_minute_bins_excluded": 16686
+      },
+      "always_off_baseline": {
+        "mae_w": 5.013400862595872,
+        "rmse_w": 85.53061523411401,
+        "active_precision_at_100w": 0.0,
+        "active_recall_at_100w": 0.0,
+        "active_f1_at_100w": 0.0,
+        "predicted_to_actual_energy_ratio": 0.0
+      },
+      "ridge_regression": {
+        "mae_w": 12.667150994233591,
+        "rmse_w": 84.19835744564323,
+        "active_precision_at_100w": 0.09127382146439318,
+        "active_recall_at_100w": 0.08809293320425944,
+        "active_f1_at_100w": 0.08965517241379312,
+        "predicted_to_actual_energy_ratio": 1.7071897175448598
+      },
+      "thresholded_candidate_not_selected": {
+        "mae_w": 5.013400862595872,
+        "rmse_w": 85.53061523411401,
+        "active_precision_at_100w": 0.0,
+        "active_recall_at_100w": 0.0,
+        "active_f1_at_100w": 0.0,
+        "predicted_to_actual_energy_ratio": 0.0
+      }
+    },
+    {
+      "house": 2,
+      "channel": "Appliance2",
+      "split_dates": {
+        "validation_start": "2014-11-24T02:42:00",
+        "test_start": "2015-01-24T20:30:00"
+      },
+      "usable_minutes": {
+        "usable_train_minutes": 417739,
+        "usable_validation_minutes": 82017,
+        "usable_test_minutes": 149489,
+        "issue_flagged_minute_bins_excluded": 13458
+      },
+      "always_off_baseline": {
+        "mae_w": 18.44711762394753,
+        "rmse_w": 176.63871614003554,
+        "active_precision_at_100w": 0.0,
+        "active_recall_at_100w": 0.0,
+        "active_f1_at_100w": 0.0,
+        "predicted_to_actual_energy_ratio": 0.0
+      },
+      "ridge_regression": {
+        "mae_w": 29.472410990826017,
+        "rmse_w": 171.35296225848407,
+        "active_precision_at_100w": 0.11900243968555164,
+        "active_recall_at_100w": 0.1777327935222672,
+        "active_f1_at_100w": 0.1425556096768956,
+        "predicted_to_actual_energy_ratio": 0.7739127885599891
+      },
+      "thresholded_candidate_not_selected": {
+        "mae_w": 18.44711762394753,
+        "rmse_w": 176.63871614003554,
+        "active_precision_at_100w": 0.0,
+        "active_recall_at_100w": 0.0,
+        "active_f1_at_100w": 0.0,
+        "predicted_to_actual_energy_ratio": 0.0
+      }
+    },
+    {
+      "house": 3,
+      "channel": "Appliance6",
+      "split_dates": {
+        "validation_start": "2014-11-30T01:27:00",
+        "test_start": "2015-01-30T12:36:00"
+      },
+      "usable_minutes": {
+        "usable_train_minutes": 486101,
+        "usable_validation_minutes": 82786,
+        "usable_test_minutes": 147931,
+        "issue_flagged_minute_bins_excluded": 60633
+      },
+      "always_off_baseline": {
+        "mae_w": 24.69814180974226,
+        "rmse_w": 192.8307947603616,
+        "active_precision_at_100w": 0.0,
+        "active_recall_at_100w": 0.0,
+        "active_f1_at_100w": 0.0,
+        "predicted_to_actual_energy_ratio": 0.0
+      },
+      "ridge_regression": {
+        "mae_w": 35.32143671635283,
+        "rmse_w": 182.74016004345665,
+        "active_precision_at_100w": 0.2496732026143791,
+        "active_recall_at_100w": 0.22224808005585292,
+        "active_f1_at_100w": 0.23516375277025361,
+        "predicted_to_actual_energy_ratio": 0.6388574212502911
+      },
+      "thresholded_candidate_not_selected": {
+        "mae_w": 24.7015223939306,
+        "rmse_w": 192.8351783650376,
+        "active_precision_at_100w": 0.0,
+        "active_recall_at_100w": 0.0,
+        "active_f1_at_100w": 0.0,
+        "predicted_to_actual_energy_ratio": 0.0001368760538497762
+      }
+    },
+    {
+      "house": 5,
+      "channel": "Appliance3",
+      "split_dates": {
+        "validation_start": "2014-12-24T05:51:00",
+        "test_start": "2015-02-27T01:50:00"
+      },
+      "usable_minutes": {
+        "usable_train_minutes": 534033,
+        "usable_validation_minutes": 87881,
+        "usable_test_minutes": 140825,
+        "issue_flagged_minute_bins_excluded": 70888
+      },
+      "always_off_baseline": {
+        "mae_w": 26.160047798366104,
+        "rmse_w": 155.83090822698767,
+        "active_precision_at_100w": 0.0,
+        "active_recall_at_100w": 0.0,
+        "active_f1_at_100w": 0.0,
+        "predicted_to_actual_energy_ratio": 0.0
+      },
+      "ridge_regression": {
+        "mae_w": 35.963409552521384,
+        "rmse_w": 148.8141240395977,
+        "active_precision_at_100w": 0.3043165467625899,
+        "active_recall_at_100w": 0.053134028388393414,
+        "active_f1_at_100w": 0.09047160731472569,
+        "predicted_to_actual_energy_ratio": 0.6040080683352411
+      },
+      "thresholded_candidate_not_selected": {
+        "mae_w": 26.160047798366104,
+        "rmse_w": 155.83090822698767,
+        "active_precision_at_100w": 0.0,
+        "active_recall_at_100w": 0.0,
+        "active_f1_at_100w": 0.0,
+        "predicted_to_actual_energy_ratio": 0.0
+      }
+    }
+  ],
+  "coefficients": {
+    "intercept": -6.74455376479716,
+    "aggregate_w": 14.101597798997481,
+    "aggregate_lag_1m_w": 6.574316764175102,
+    "aggregate_lag_5m_w": 1.8724511893431295,
+    "aggregate_mean_5m_w": 19.60589362408993,
+    "aggregate_mean_15m_w": -7.863878298920022,
+    "aggregate_change_1m_w": 7.527280976550886,
+    "hour_sin": 3.4652133566208354,
+    "hour_cos": -7.8110978195888165,
+    "weekday_sin": -0.04967402097730098,
+    "weekday_cos": -0.8658760942346874
+  },
+  "figure": "reports/figures/model_actual_vs_pred_house1.svg",
+  "failure_cases": [
+    "Other appliances can produce aggregate power patterns similar to a washing machine.",
+    "Long data outages and records flagged by the REFIT Issues column reduce the quality of training labels.",
+    "A linear model cannot fully represent the washing machine's separate heating, motor, and spin phases."
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "source_files": [
+    "RAW_House1_Part1.csv",
+    "RAW_House1_Part2.csv"
+  ],
+  "household": 1,
+  "timestamp_column_in_source": "Time",
+  "units": "Watts (W), as supplied by REFIT",
+  "raw_inspection": {
+    "rows": 8518763,
+    "invalid_timestamps": 0,
+    "start": "2013-10-09T14:06:17",
+    "end": "2015-07-10T11:56:32",
+    "out_of_order_rows": 3,
+    "source_parts": {
+      "Part1": {
+        "rows": 4377877,
+        "start": "2013-10-09T14:06:17",
+        "end": "2014-10-01T01:27:07",
+        "duplicate_timestamp_rows_involved": 1211004,
+        "extra_rows_at_duplicate_timestamps": 645514,
+        "exact_duplicate_measurement_rows": 595935
+      },
+      "Part2": {
+        "rows": 4140886,
+        "start": "2014-06-27T21:57:50",
+        "end": "2015-07-10T11:56:32",
+        "duplicate_timestamp_rows_involved": 0,
+        "extra_rows_at_duplicate_timestamps": 0,
+        "exact_duplicate_measurement_rows": 0
+      }
+    },
+    "raw_missing_by_channel": {
+      "Aggregate": 188973,
+      "Appliance1": 437890,
+      "Appliance2": 459468,
+      "Appliance3": 311961,
+      "Appliance4": 510963,
+      "Appliance5": 497223,
+      "Appliance6": 342337,
+      "Appliance7": 232752,
+      "Appliance8": 390705,
+      "Appliance9": 1911811
+    },
+    "nonnumeric_values_by_channel": {
+      "Aggregate": 0,
+      "Appliance1": 0,
+      "Appliance2": 0,
+      "Appliance3": 0,
+      "Appliance4": 0,
+      "Appliance5": 0,
+      "Appliance6": 0,
+      "Appliance7": 0,
+      "Appliance8": 0,
+      "Appliance9": 0
+    },
+    "timestamp_interval_seconds": {
+      "median_seconds": 6.0,
+      "min_seconds": 0.0,
+      "max_seconds": 3594413.0,
+      "intervals_over_2_minutes": 530
+    }
+  },
+  "cleaning": {
+    "exact_duplicate_measurement_rows_removed": 321692,
+    "rows_involved_in_conflicting_timestamp_duplicates": 53685,
+    "duplicate_rule": "Remove exact repeated measurements; average differing readings that share a timestamp per channel",
+    "negative_readings_set_missing": {
+      "Aggregate": 0,
+      "Appliance1": 0,
+      "Appliance2": 0,
+      "Appliance3": 0,
+      "Appliance4": 0,
+      "Appliance5": 0,
+      "Appliance6": 0,
+      "Appliance7": 0,
+      "Appliance8": 0,
+      "Appliance9": 0
+    },
+    "iam_readings_above_4000w_set_missing": {
+      "Appliance1": 780,
+      "Appliance2": 36,
+      "Appliance3": 117,
+      "Appliance4": 1090,
+      "Appliance5": 70,
+      "Appliance6": 35,
+      "Appliance7": 374,
+      "Appliance8": 160,
+      "Appliance9": 46
+    },
+    "aggregate_readings_above_20000w_flagged_and_retained": 104,
+    "missing_minute_bins_before_short_fill": {
+      "Aggregate": 119681,
+      "Appliance1": 123780,
+      "Appliance2": 123469,
+      "Appliance3": 121140,
+      "Appliance4": 132846,
+      "Appliance5": 129693,
+      "Appliance6": 120559,
+      "Appliance7": 119701,
+      "Appliance8": 121885,
+      "Appliance9": 338428
+    },
+    "minute_bins_filled_forward": {
+      "Aggregate": 1530,
+      "Appliance1": 3361,
+      "Appliance2": 3079,
+      "Appliance3": 1597,
+      "Appliance4": 4245,
+      "Appliance5": 4407,
+      "Appliance6": 1486,
+      "Appliance7": 1542,
+      "Appliance8": 2490,
+      "Appliance9": 3094
+    },
+    "missing_minute_bins_left_unfilled": {
+      "Aggregate": 118151,
+      "Appliance1": 120419,
+      "Appliance2": 120390,
+      "Appliance3": 119543,
+      "Appliance4": 128601,
+      "Appliance5": 125286,
+      "Appliance6": 119073,
+      "Appliance7": 118159,
+      "Appliance8": 119395,
+      "Appliance9": 335334
+    },
+    "resampling": "Arithmetic mean of valid readings in each 1-minute bin",
+    "short_gap_rule": "Forward-fill up to 2 consecutive missing one-minute bins per channel",
+    "long_gap_rule": "Leave longer gaps missing and flag them in the report",
+    "source_version_selection": {
+      "rule": "Use Part1 before Part2 begins; use Part2 from its first timestamp onward because the readme identifies Part2 as the later database iteration with unavailable sensors represented as NaN",
+      "part2_start": "2014-06-27T21:57:50",
+      "part1_rows_excluded_from_overlap": 1257865,
+      "part1_rows_retained_before_part2_start": 3120012,
+      "part2_rows_retained": 4140886
+    }
+  },
+  "outputs": {
+    "cleaned_csv": "data/processed/house1_1min_clean.csv",
+    "comparison_plot": "reports/figures/house1_cleaning_comparison.svg"
+  },
+  "notes": [
+    "Aggregate values above 20 kW are counted and flagged for review, not removed automatically.",
+    "The 4 kW sensor limit is applied only to individual appliance monitor (IAM) channels.",
+    "The plot uses Aggregate, Appliance1 (Fridge), and Appliance5 (Washing Machine) when present."
+  ]
+}

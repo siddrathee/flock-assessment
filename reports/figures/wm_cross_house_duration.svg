@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="450" viewBox="0 0 1000 450">
+<rect width="100%" height="100%" fill="white"/>
+<text x="32" y="32" font-family="Arial,sans-serif" font-size="21" font-weight="bold">Median detected washing-machine cycle duration by house</text>
+<text x="32" y="53" font-family="Arial,sans-serif" font-size="12" fill="#475569">Detected cycles only · source: cleaned REFIT · one-minute means</text>
+<line x1="82" y1="356.0" x2="964" y2="356.0" stroke="#e2e8f0"/>
+<text x="72" y="360.0" text-anchor="end" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0.0</text>
+<line x1="82" y1="284.5" x2="964" y2="284.5" stroke="#e2e8f0"/>
+<text x="72" y="288.5" text-anchor="end" font-family="Arial,sans-serif" font-size="11" fill="#64748b">28.5</text>
+<line x1="82" y1="213.0" x2="964" y2="213.0" stroke="#e2e8f0"/>
+<text x="72" y="217.0" text-anchor="end" font-family="Arial,sans-serif" font-size="11" fill="#64748b">56.9</text>
+<line x1="82" y1="141.5" x2="964" y2="141.5" stroke="#e2e8f0"/>
+<text x="72" y="145.5" text-anchor="end" font-family="Arial,sans-serif" font-size="11" fill="#64748b">85.4</text>
+<line x1="82" y1="70.0" x2="964" y2="70.0" stroke="#e2e8f0"/>
+<text x="72" y="74.0" text-anchor="end" font-family="Arial,sans-serif" font-size="11" fill="#64748b">113.8</text>
+<text transform="translate(20 213.0) rotate(-90)" text-anchor="middle" font-family="Arial,sans-serif" font-size="12">Median duration (minutes)</text>
+<rect x="139.3" y="273.1" width="105.8" height="82.9" fill="#0f766e"/>
+<text x="192.2" y="378" text-anchor="middle" font-family="Arial,sans-serif" font-size="12">House 1</text>
+<text x="192.2" y="266.1" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#334155">33.0</text>
+<rect x="359.8" y="107.3" width="105.8" height="248.7" fill="#0f766e"/>
+<text x="412.8" y="378" text-anchor="middle" font-family="Arial,sans-serif" font-size="12">House 2</text>
+<text x="412.8" y="100.3" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#334155">99.0</text>
+<rect x="580.3" y="192.7" width="105.8" height="163.3" fill="#0f766e"/>
+<text x="633.2" y="378" text-anchor="middle" font-family="Arial,sans-serif" font-size="12">House 3</text>
+<text x="633.2" y="185.7" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#334155">65.0</text>
+<rect x="800.8" y="258.0" width="105.8" height="98.0" fill="#0f766e"/>
+<text x="853.8" y="378" text-anchor="middle" font-family="Arial,sans-serif" font-size="12">House 5</text>
+<text x="853.8" y="251.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#334155">39.0</text>
+</svg>

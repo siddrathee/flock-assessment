@@ -1,0 +1,7 @@
+.DS_Store
+/data/raw/*.csv
+/data/raw/*.7z
+/data/CLEAN_REFIT_081116/
+/data/REFIT_RAW_081116/
+/data/processed/*.csv
+/data/processed/washing_machine_1min/*.csv
