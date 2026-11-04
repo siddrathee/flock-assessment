@@ -23,7 +23,35 @@ Expected local files:
 - `data/raw/CLEAN_READ_ME_081116.txt` for source-format and appliance-channel
   notes.
 
-Install the only required Python packages if they are not already available:
+### Download and extract the data
+
+Download the official archives from the [REFIT dataset page](https://pureportal.strath.ac.uk/en/datasets/refit-electrical-load-measurements/)
+or use these direct University of Strathclyde links:
+
+- [Raw REFIT archive (7z)](https://pureportal.strath.ac.uk/files/62090177/REFIT_RAW_081116.7z)
+- [Cleaned REFIT archive (7z)](https://pureportal.strath.ac.uk/files/62090184/CLEAN_REFIT_081116.7z)
+- [Cleaned-data readme](https://pure.strath.ac.uk/ws/portalfiles/portal/62090183/CLEAN_READ_ME_081116.txt)
+
+From the repository root, download the archives and extract them with the
+`7zz` command-line extractor from 7-Zip. Install 7-Zip first if `7zz` is not
+available on your system:
+
+```bash
+mkdir -p data/raw data/REFIT_RAW_081116 data/CLEAN_REFIT_081116
+curl -L 'https://pureportal.strath.ac.uk/files/62090177/REFIT_RAW_081116.7z' -o data/raw/REFIT_RAW_081116.7z
+curl -L 'https://pureportal.strath.ac.uk/files/62090184/CLEAN_REFIT_081116.7z' -o data/raw/CLEAN_REFIT_081116.7z
+7zz x data/raw/REFIT_RAW_081116.7z -odata/REFIT_RAW_081116
+7zz x data/raw/CLEAN_REFIT_081116.7z -odata/CLEAN_REFIT_081116
+```
+
+The cleaned-data readme is already included at
+`data/raw/CLEAN_READ_ME_081116.txt`. If you need a fresh copy, download it
+from the link above. The archives and extracted CSVs are ignored by Git and
+stay local. If extraction creates an extra enclosing directory, move the
+files named above into the expected directories before running the scripts.
+
+Install the Python packages required by the analysis scripts if they are not
+already available:
 
 ```bash
 python -m pip install pandas numpy

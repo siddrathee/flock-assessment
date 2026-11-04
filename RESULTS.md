@@ -63,7 +63,18 @@ the event rule and the households' appliance models and routines.
 
 ![House 1 aggregate and washing-machine trace](reports/figures/wm_24h_trace_house1.svg)
 
+On the selected day, washing-machine power appears in distinct high-power
+bursts while whole-home aggregate power varies throughout the day. The plot
+uses separate vertical scales, so timing and shape are informative but the
+line heights should not be compared directly; aggregate peaks can also come
+from other appliances.
+
 ![Example detected washing-machine event](reports/figures/wm_detected_cycle.svg)
+
+The illustrated House 5 segment lasts 349 minutes and reaches about 2.23 kW,
+close to the six-hour duration cap. Treat it as a cautionary example of the
+threshold heuristic rather than a typical wash: the signal stays active for
+an unusually long period, and the data has no verified cycle labels.
 
 ![Cycle starts by hour and weekday](reports/figures/wm_cycle_starts_hour_weekday.svg)
 
